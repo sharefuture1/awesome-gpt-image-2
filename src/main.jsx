@@ -45,16 +45,16 @@ const gaMeasurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
 const copy = {
   en: {
     loading: 'Loading GPT-Image2 cases...',
-    brand: 'GPT-Image2 Gallery',
+    brand: 'Wending AI',
     navCases: 'Cases',
     navSkill: 'Skill',
     navTemplates: 'Templates',
     navCommunity: 'Community',
-    communityQrAlt: 'WeChat community invite card for GPT-Image2',
-    eyebrow: 'Live GPT-Image2 prompt gallery',
+    communityQrAlt: 'AI 图片创作微信群邀请卡',
+    eyebrow: 'Live AI image prompt gallery',
     title: 'From viral images to reusable prompts.',
     subtitle:
-      'A visual workspace for GPT-Image2 creation: browse real cases, copy prompts, test image generation, explore industrial templates, and join the creator community.',
+      'A visual workspace for AI image creation: browse real cases, copy prompts, test image generation, explore industrial templates.',
     explore: 'Explore cases',
     githubProject: 'GitHub project',
     cases: 'cases',
@@ -65,11 +65,11 @@ const copy = {
     templateEyebrow: '20+ industrial prompt templates',
     templateTitle: 'Start from a proven template, then remix the case library.',
     templateSubtitle:
-      'Each template is distilled from real GPT-Image2 examples and includes structure, constraints, and pitfalls for production use.',
+      'Each template is distilled from real AI image examples and includes structure, constraints, and pitfalls for production use.',
     templateKind: 'Prompt Template',
     openTemplate: 'Open Template',
     skillEyebrow: 'Agent skill',
-    skillTitle: 'Bring the GPT-Image2 style library into Claude Code and Codex.',
+    skillTitle: 'Bring the AI image style library into Claude Code and Codex.',
     skillSubtitle:
       'Install one skill, then let your agent choose templates, visual styles, scene tags, and pitfalls from the same library behind this site.',
     skillCommandLabel: 'Install for local agents',
@@ -248,8 +248,8 @@ const copy = {
     limit: (count) => `Showing the first ${count} results for speed. Use search or filters to narrow the gallery.`
   },
   zh: {
-    loading: '正在加载 GPT-Image2 案例...',
-    brand: 'GPT-Image2 画廊',
+    loading: '正在加载 AI 图片案例...',
+    brand: '问鼎 AI',
     navCases: '案例',
     navSkill: '技能',
     navTemplates: '模板',
@@ -273,7 +273,7 @@ const copy = {
     templateKind: '提示词模板',
     openTemplate: '打开模板',
     skillEyebrow: 'Agent Skill',
-    skillTitle: '把 GPT-Image2 风格库装进 Claude Code 和 Codex。',
+    skillTitle: '把 AI 图片风格库装进 Claude Code 和 Codex。',
     skillSubtitle:
       '安装一个 skill，让 Agent 从本站同源的模板、风格、场景和防坑规则里自动选型，直接输出可复制的 GPT Image 2 prompt。',
     skillCommandLabel: '安装到本地 Agent',
@@ -341,7 +341,7 @@ const copy = {
     account: '账号',
     accountSettings: '账户设置',
     accountTitle: '账户设置',
-    accountSubtitle: '管理你的显示名称、会员状态和 GPT-Image2 积分消耗。',
+    accountSubtitle: '管理你的显示名称、会员状态和 AI 图片积分消耗。',
     displayName: '显示名称',
     saveProfile: '保存资料',
     profileSaved: '资料已保存。',
@@ -369,7 +369,7 @@ const copy = {
     monthlyCredits: (count) => `每月 ${count} 积分`,
     packCredits: (count) => `${count} 积分`,
     billingTitle: '会员与积分',
-    billingSubtitle: '会员每月自动获得积分，也可以随时购买积分包，用来测试更多 GPT-Image2 案例。',
+    billingSubtitle: '会员每月自动获得积分，也可以随时购买积分包，用来测试更多 AI 图片案例。',
     balanceTitle: '当前余额',
     transactionHistory: '积分流水',
     noTransactions: '暂无积分流水。',
@@ -3273,7 +3273,7 @@ function App() {
     <main>
       <header className="topbar">
         <a className="brand" href="#">
-          <WandSparkles size={21} />
+          <img src="https://pub-b1ca55f26b8c4b68bed9070080a97700.r2.dev/wendingai.jpg" alt="logo" width="28" height="28" style="border-radius:6px;object-fit:cover;" />
           {t.brand}
         </a>
         <div className="topbarControls">
