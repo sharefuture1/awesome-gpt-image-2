@@ -30,6 +30,9 @@ import {
   UserPlus,
   Users,
   WandSparkles,
+  Inbox,
+  SearchX,
+  FileQuestion,
   X
 } from 'lucide-react';
 import './styles.css';
@@ -1518,7 +1521,10 @@ function AccountPanel({
               ))}
             </div>
           ) : (
-            <p className="emptyTransactions">{t.noFavorites}</p>
+            <div className="emptyState">
+              <Inbox size={32} />
+              <span>{t.noFavorites}</span>
+            </div>
           )}
         </section>
 
@@ -1540,7 +1546,10 @@ function AccountPanel({
               ))}
             </div>
           ) : (
-            <p className="emptyTransactions">{t.noGenerationTransactions}</p>
+            <div className="emptyState">
+              <ReceiptText size={32} />
+              <span>{t.noGenerationTransactions}</span>
+            </div>
           )}
         </section>
       </section>
@@ -1601,7 +1610,12 @@ function AdminTrendChart({ rows = [], series = [], language, emptyLabel }) {
   }
 
   if (!rows.length) {
-    return <p className="emptyTransactions">{emptyLabel}</p>;
+    return (
+      <div className="emptyState">
+        <FileQuestion size={32} />
+        <span>{emptyLabel}</span>
+      </div>
+    );
   }
 
   const gridLines = [0, 0.25, 0.5, 0.75, 1];
@@ -1699,7 +1713,12 @@ function AdminTrendChart({ rows = [], series = [], language, emptyLabel }) {
 
 function AdminRankList({ rows, type, language }) {
   const t = copy[language];
-  if (!rows?.length) return <p className="emptyTransactions">{t.noAnalyticsRows}</p>;
+  if (!rows?.length) return (
+    <div className="emptyState">
+      <SearchX size={32} />
+      <span>{t.noAnalyticsRows}</span>
+    </div>
+  );
 
   return (
     <div className="adminRankList">
@@ -1935,7 +1954,10 @@ function AdminPanel({ open, language, session, casesById, onClose, onOpenCase })
                   {traffic.configured && traffic.daily?.length ? (
                     <AdminTrendChart rows={traffic.daily} series={trafficSeries} language={language} emptyLabel={t.noAnalyticsRows} />
                   ) : (
-                    <p className="emptyTransactions">{t.noAnalyticsRows}</p>
+                    <div className="emptyState">
+                      <FileQuestion size={32} />
+                      <span>{t.noAnalyticsRows}</span>
+                    </div>
                   )}
                 </div>
               </div>
@@ -1978,7 +2000,10 @@ function AdminPanel({ open, language, session, casesById, onClose, onOpenCase })
                   {business.daily?.length ? (
                     <AdminTrendChart rows={business.daily} series={businessSeries} language={language} emptyLabel={t.noAnalyticsRows} />
                   ) : (
-                    <p className="emptyTransactions">{t.noAnalyticsRows}</p>
+                    <div className="emptyState">
+                      <FileQuestion size={32} />
+                      <span>{t.noAnalyticsRows}</span>
+                    </div>
                   )}
                 </div>
               </div>
@@ -2380,7 +2405,10 @@ function BillingPanel({
               ))}
             </div>
           ) : (
-            <p className="emptyTransactions">{t.noTransactions}</p>
+            <div className="emptyState">
+              <ReceiptText size={32} />
+              <span>{t.noTransactions}</span>
+            </div>
           )}
         </section>
       </section>
@@ -2584,7 +2612,7 @@ const PromptCard = React.memo(function PromptCard({
             {favoriteBusy ? <LoaderCircle className="spinIcon" size={17} /> : <Heart size={17} />}
             {favorited ? t.favorited : t.favorite}
           </button>
-          <button type="button" onClick={() => onCopy(caseItem)}>
+          <button type="button" className={cx(copied && 'copied-highlight')} onClick={() => onCopy(caseItem)}>
             {copied ? <Check size={17} /> : <Copy size={17} />}
             {copied ? t.copied : t.copyPrompt}
           </button>
