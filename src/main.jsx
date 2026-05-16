@@ -44,7 +44,7 @@ const gaMeasurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
 
 const copy = {
   en: {
-    loading: 'Loading GPT-Image2 cases...',
+    loading: 'Loading AI image cases...',
     brand: 'Wending AI',
     navCases: 'Cases',
     navSkill: 'Skill',
@@ -2415,8 +2415,8 @@ function SkillSection({ language, repoUrl }) {
   const t = copy[language];
   const [commandCopied, setCommandCopied] = useState(false);
   const installCommand =
-    'npx skills add freestylefly/awesome-gpt-image-2 --skill gpt-image-2-style-library --agent claude-code codex --global --yes --copy';
-  const skillSourceUrl = `${repoUrl}/tree/main/agents/skills/gpt-image-2-style-library`;
+    'npx skills add wendingai/awesome-gpt-image-2 --skill gpt-image-2-style-library --agent claude-code codex --global --yes --copy';
+  const skillSourceUrl = ``;
   const npmUrl = 'https://www.npmjs.com/package/gpt-image-2-style-library';
 
   async function handleCopyCommand() {
@@ -2493,7 +2493,7 @@ function TemplateSection({ language, styleLibrary, onOpenTemplate }) {
           <h2>{t.templateTitle}</h2>
           <p>{t.templateSubtitle}</p>
         </div>
-        <a className="templateCta" href={`${repoDocsUrl}#section-templates`} target="_blank" rel="noreferrer">
+        <a className="templateCta" href={`#section-templates`} target="_blank" rel="noreferrer">
           {t.openTemplate}
           <ArrowUpRight size={16} />
         </a>
@@ -2535,7 +2535,7 @@ function TemplateSection({ language, styleLibrary, onOpenTemplate }) {
                     <Eye size={17} />
                     {t.viewDetails}
                   </button>
-                  <a href={`${repoDocsUrl}#${item.anchor}`} target="_blank" rel="noreferrer">
+                  <a href={`#${item.anchor}`} target="_blank" rel="noreferrer">
                     {t.openTemplate}
                     <ArrowUpRight size={17} />
                   </a>
@@ -2922,7 +2922,7 @@ function PreviewDialog({
                   <div className="exampleCaseRow">
                     {item.exampleCases.map((caseId) => (
                       <a
-                        href={`${styleLibrary.repository || fallbackRepoUrl}/blob/main/docs/gallery.md#case-${caseId}`}
+                        href={`#case-${caseId}`}
                         target="_blank"
                         rel="noreferrer"
                         key={caseId}
@@ -2969,8 +2969,18 @@ function App() {
   useEffect(() => {
     let cancelled = false;
     Promise.all([
-      fetch('/cases.json').then((response) => response.json()),
-      fetch('/style-library.json').then((response) => response.json())
+      fetch('/cases.json')
+        .then((response) => {
+          if (!response.ok) throw new Error('CASES_FETCH_FAILED');
+          return response.json();
+        })
+        .catch(() => null),
+      fetch('/style-library.json')
+        .then((response) => {
+          if (!response.ok) throw new Error('STYLE_LIBRARY_FETCH_FAILED');
+          return response.json();
+        })
+        .catch(() => null)
     ])
       .then(([payload, library]) => {
         if (!cancelled) {
