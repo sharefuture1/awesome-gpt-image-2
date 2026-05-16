@@ -6,6 +6,16 @@ export default defineConfig({
   publicDir: 'data',
   build: {
     outDir: 'dist',
-    sourcemap: false
+    sourcemap: false,
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-lucide': ['lucide-react'],
+          'vendor-supabase': ['@supabase/supabase-js']
+        }
+      }
+    }
   }
 });

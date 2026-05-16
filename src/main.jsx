@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   ArrowUpRight,
@@ -2530,7 +2530,7 @@ function TemplateSection({ language, styleLibrary, onOpenTemplate }) {
   );
 }
 
-function PromptCard({
+const PromptCard = React.memo(function PromptCard({
   caseItem,
   copied,
   favorited,
@@ -2603,7 +2603,7 @@ function PromptCard({
       </div>
     </article>
   );
-}
+});
 
 function PreviewDialog({
   preview,

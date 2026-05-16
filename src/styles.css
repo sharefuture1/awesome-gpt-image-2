@@ -1,4 +1,14 @@
 :root {
+  /* Scrollbar & selection */
+  --scrollbar-width: 8px;
+  --selection-bg: rgba(47, 211, 255, 0.28);
+  --focus-ring: 0 0 0 3px rgba(47, 211, 255, 0.45);
+  /* Toast */
+  --toast-bg: rgba(7, 12, 26, 0.96);
+  --toast-border: rgba(255, 255, 255, 0.14);
+  --toast-success: #36ef8f;
+  --toast-error: #ff5a78;
+
   color: #eef5ff;
   background: #060914;
   font-family:
@@ -19,6 +29,7 @@ html {
 body {
   min-width: 320px;
   margin: 0;
+  padding-bottom: env(safe-area-inset-bottom);
   background:
     radial-gradient(circle at 12% 8%, rgba(47, 211, 255, 0.18), transparent 28rem),
     radial-gradient(circle at 88% 0%, rgba(255, 73, 167, 0.16), transparent 30rem),
@@ -1364,6 +1375,13 @@ button {
   font-weight: 800;
   text-align: center;
   white-space: nowrap;
+  transition: transform 120ms ease, border-color 160ms ease, background 160ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cardActions button:active,
+.cardActions a:active {
+  transform: scale(0.95);
 }
 
 .cardActions button:hover,
@@ -3326,4 +3344,42 @@ button {
   .transactionItem {
     width: 100%;
   }
+}
+
+/* ─── Scrollbar ─────────────────────────────── */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+
+/* ─── Selection ─────────────────────────────── */
+::selection {
+  background: var(--selection-bg);
+  color: #ffffff;
+}
+
+/* ─── Focus ─────────────────────────────────── */
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* ─── Toast keyframes ───────────────────────── */
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+@keyframes toastOut {
+  from { opacity: 1; transform: translateY(0)    scale(1); }
+  to   { opacity: 0; transform: translateY(8px)  scale(0.96); }
 }
