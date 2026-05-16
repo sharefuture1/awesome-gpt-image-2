@@ -11,7 +11,6 @@ import {
   CreditCard,
   Crown,
   Eye,
-  Github,
   Heart,
   ImageIcon,
   LoaderCircle,
@@ -40,7 +39,7 @@ import { isSupabaseConfigured, supabase } from './supabaseClient';
 import wechatCommunityImage from './assets/wechat-community.jpg';
 import skillExampleImage from '../agents/skills/gpt-image-2-style-library/assets/city-life-system-map.png';
 
-const fallbackRepoUrl = 'https://github.com/freestylefly/awesome-gpt-image-2';
+const fallbackRepoUrl = '';
 const gaMeasurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
 
 const copy = {
@@ -950,10 +949,6 @@ function Hero({ latestCases, language, repoUrl, totalCases, categoryCount, onOpe
           <a className="primaryAction" href="#gallery">
             {t.explore}
             <ArrowUpRight size={18} />
-          </a>
-          <a className="secondaryAction" href={repoUrl} target="_blank" rel="noreferrer">
-            <Github size={18} />
-            {t.githubProject}
           </a>
         </div>
         <div className="metrics">
@@ -2467,10 +2462,6 @@ function SkillSection({ language, repoUrl }) {
             <code>{t.skillPrompt}</code>
           </div>
           <div className="skillActions">
-            <a href={skillSourceUrl} target="_blank" rel="noreferrer">
-              <Github size={18} />
-              {t.skillOpenDocs}
-            </a>
             <a href={npmUrl} target="_blank" rel="noreferrer">
               <PackageCheck size={18} />
               {t.skillNpm}
@@ -2624,9 +2615,6 @@ const PromptCard = React.memo(function PromptCard({
             <ImageIcon size={17} />
             {t.generateTest}
           </button>
-          <a href={caseItem.githubUrl} target="_blank" rel="noreferrer" aria-label={t.openOnGithub}>
-            <Github size={18} />
-          </a>
         </div>
       </div>
     </article>
@@ -2700,8 +2688,8 @@ function PreviewDialog({
   const promptText = isTemplate ? formatTemplatePrompt(item, language, styleLibrary) : editablePrompt;
   const copyId = isTemplate ? `template-${item.id}` : `case-${item.id}`;
   const isCopied = copiedId === copyId;
-  const primaryLink = isTemplate ? `${repoDocsUrl}#${item.anchor}` : item.githubUrl;
-  const primaryLabel = isTemplate ? t.openTemplate : t.openOnGithub;
+  const primaryLink = isTemplate ? `${repoDocsUrl}#${item.anchor}` : '#gallery';
+  const primaryLabel = isTemplate ? t.openTemplate : t.explore;
   const meta = isTemplate
     ? [t.templateKind, localizeLabel(item.category, language, styleLibrary)]
     : [
@@ -3294,9 +3282,6 @@ function App() {
             <a href="#templates">{t.navTemplates}</a>
             <a href="#agent-skill">{t.navSkill}</a>
             <CommunityNavItem language={language} />
-            <a href={repoUrl} target="_blank" rel="noreferrer">
-              GitHub
-            </a>
           </nav>
           <LanguageSwitch language={language} setLanguage={setLanguage} />
           <UserMenu
@@ -3394,10 +3379,6 @@ function App() {
 
         <div className="resultBar">
           <span>{language === 'zh' ? `${filteredCases.length} ${t.matching}` : `${filteredCases.length} ${t.matching}`}</span>
-          <a href={repoUrl} target="_blank" rel="noreferrer">
-            {t.openGithub}
-            <ArrowUpRight size={16} />
-          </a>
         </div>
 
         <div className="caseGrid">
