@@ -3283,7 +3283,7 @@ function App() {
     <main>
       <header className="topbar">
         <a className="brand" href="#">
-          <img src="https://pub-b1ca55f26b8c4b68bed9070080a97700.r2.dev/wendingai.jpg" alt="logo" width="28" height="28" style="border-radius:6px;object-fit:cover;" />
+          <img src="https://pub-b1ca55f26b8c4b68bed9070080a97700.r2.dev/wendingai.jpg" alt="logo" width="28" height="28" style={{borderRadius: '6px', objectFit: 'cover'}} />
           {t.brand}
         </a>
         <div className="topbarControls">
